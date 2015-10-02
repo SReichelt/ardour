@@ -135,7 +135,7 @@ InternalSend::send_to_going_away ()
 void
 InternalSend::run (BufferSet& bufs, framepos_t start_frame, framepos_t end_frame, double speed, pframes_t nframes, bool)
 {
-	if ((!_active && !_pending_active) || !_send_to) {
+	if ((!_active && !_pending_active) || !_send_to || (_role == Aux && _session.get_record_enabled() && Config->get_bypass_aux_sends_while_recording())) {
 		_meter->reset ();
 		return;
 	}

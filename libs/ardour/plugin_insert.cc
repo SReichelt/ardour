@@ -1085,7 +1085,7 @@ PluginInsert::run (BufferSet& bufs, framepos_t start_frame, framepos_t end_frame
 		_sidechain->run (bufs, start_frame, end_frame, speed, nframes, true);
 	}
 
-	if (_pending_active) {
+	if (_pending_active && !(_session.get_record_enabled() && Config->get_bypass_plugins_while_recording())) {
 		/* run as normal if we are active or moving from inactive to active */
 
 		if (_session.transport_rolling() || _session.bounce_processing()) {

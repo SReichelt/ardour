@@ -2873,6 +2873,22 @@ if (!ARDOUR::Profile->get_mixbus()) {
 					    _("<b>When enabled</b> plugins will be reset at transport stop. When disabled plugins will be left unchanged at transport stop.\n\nThis mostly affects plugins with a \"tail\" like Reverbs."));
 
 	bo = new BoolOption (
+		     "bypass-plugins-while-recording",
+		     _("Bypass plugins while recording"),
+		     sigc::mem_fun (*_rc_config, &RCConfiguration::get_bypass_plugins_while_recording),
+		     sigc::mem_fun (*_rc_config, &RCConfiguration::set_bypass_plugins_while_recording)
+		     ));
+	add_option (_("Plugins"), bo);
+
+	bo = new BoolOption (
+		     "bypass-aux-sends-while-recording",
+		     _("Bypass aux sends while recording"),
+		     sigc::mem_fun (*_rc_config, &RCConfiguration::get_bypass_aux_sends_while_recording),
+		     sigc::mem_fun (*_rc_config, &RCConfiguration::set_bypass_aux_sends_while_recording)
+		     ));
+	add_option (_("Plugins"), bo);
+
+	bo = new BoolOption (
 		"new-plugins-active",
 			_("Make new plugins active"),
 			sigc::mem_fun (*_rc_config, &RCConfiguration::get_new_plugins_active),

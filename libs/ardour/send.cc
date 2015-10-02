@@ -167,7 +167,7 @@ Send::run (BufferSet& bufs, framepos_t start_frame, framepos_t end_frame, double
 		return;
 	}
 
-	if (!_active && !_pending_active) {
+	if ((!_active && !_pending_active) || (_role == Aux && _session.get_record_enabled() && Config->get_bypass_aux_sends_while_recording())) {
 		_meter->reset ();
 		_output->silence (nframes);
 		_active = _pending_active;
