@@ -2877,7 +2877,7 @@ if (!ARDOUR::Profile->get_mixbus()) {
 		     _("Bypass plugins while recording"),
 		     sigc::mem_fun (*_rc_config, &RCConfiguration::get_bypass_plugins_while_recording),
 		     sigc::mem_fun (*_rc_config, &RCConfiguration::set_bypass_plugins_while_recording)
-		     ));
+		     );
 	add_option (_("Plugins"), bo);
 
 	bo = new BoolOption (
@@ -2885,7 +2885,7 @@ if (!ARDOUR::Profile->get_mixbus()) {
 		     _("Bypass aux sends while recording"),
 		     sigc::mem_fun (*_rc_config, &RCConfiguration::get_bypass_aux_sends_while_recording),
 		     sigc::mem_fun (*_rc_config, &RCConfiguration::set_bypass_aux_sends_while_recording)
-		     ));
+		     );
 	add_option (_("Plugins"), bo);
 
 	bo = new BoolOption (
